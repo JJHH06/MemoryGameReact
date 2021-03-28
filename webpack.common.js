@@ -3,7 +3,7 @@ const path = require("path");
 
 module.exports = {
     entry:{
-      main:  "./src/index.js"
+        main:  "./src/index.js"
     },
     
     plugins: [new HtmlWebpackPlugin({
@@ -15,6 +15,11 @@ module.exports = {
     
 
 ],
+//no ten
+resolve: {
+    extensions: ['.js', '.jsx'],
+},
+
     module: {
         rules: [
             
@@ -26,6 +31,13 @@ module.exports = {
                         name: "[name].[hash].[ext]",
                         outputPath: "assets"
                     }
+                }
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
                 }
             }
 

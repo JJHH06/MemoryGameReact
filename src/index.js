@@ -1,4 +1,6 @@
 //Colocacion de utilidades
 import "./style.scss"
 import "bootstrap/dist/js/bootstrap"
-//import "./menu/menu"
+import React from 'react';
+import ReactDom from 'react-dom';
+
