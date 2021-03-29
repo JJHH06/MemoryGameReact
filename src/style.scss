@@ -1,6 +1,6 @@
 .game-container{
     width: 80%;
-    height: 80%;
+    height: 90%;
     background-color: white;
 }
 
@@ -11,14 +11,14 @@
     display: flex;
     justify-content:  center;
     align-items: center;
-    
+
 }
 
 .card{
     display: inline-block;
     margin: 1%;
-    height: 8%;
-    width: 8%;
+    height: 22%;
+    width: 18%;
 }
 @import "~bootstrap/scss/bootstrap";
 

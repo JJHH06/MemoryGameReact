@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
+import ReactCardFlip from 'react-card-flip';
+import fondo from '../assets/background.png';
 
-const Card = () =>{
+
+const Card = ({imagen, casilla, id}) =>{
+    const [isRevealed, setRevealed] = useState(false);
     return (
-        <div>
-            <h2>Carta xd</h2>
+        <div className = 'card'>
+            <h2>Carta</h2>
         </div>
     )
 }
