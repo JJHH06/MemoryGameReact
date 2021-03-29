@@ -1,7 +1,10 @@
 # MemoryGameReact
 
-Para crear los archivos se utiliza:
+\nPara crear los archivos se utiliza:
 `npm run build` 
 
-Para correr con nodejs:
+\nPara correr con nodejs:
 `npm start` 
+
+\n\n
+> Importante: Si se corre en VSCode, verificar que la secuencia de final de linea sea LF
