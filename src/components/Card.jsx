@@ -19,7 +19,7 @@ const Card = ({
     }
   }, [winnedCards]);
 
-  const clickListener = (e) => {
+  const clickListener = () => {
     // esto va a hacer que se revierta siempre el boolean de estado
     if (isAllowedToClick) {
       if (cardIsFlippable(id, casilla)) {
@@ -27,12 +27,14 @@ const Card = ({
       }
     }
   };
-
+  //    Se debe poder hacer click en una imagen, por lo que no seria valido
+  //    el no-noninteractive-element-interactions
   return (
     <div className="card">
       <ReactCardFlip isFlipped={isRevealed}>
-        <img className="memory-image" src={fondo} alt="fondo" onClick={clickListener} />
-        <img className="memory-image" src={imagen} alt="imagen" onClick={clickListener} />
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+        <img className="memory-image" src={fondo} alt="fondo" onClick={clickListener} onKeyDown={clickListener} />
+        <img className="memory-image" src={imagen} alt="imagen" />
       </ReactCardFlip>
     </div>
   );
