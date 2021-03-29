@@ -1,11 +1,11 @@
 .game-container{
-    width: 80%;
-    height: 90%;
-    background-color: white;
+    width: 48%;
+    height: 100%;
+    background-color: rgb(161, 136, 127);
 }
 
 .game{
-    background-color: aqua;
+    background-color: rgb(211, 184, 174);
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -14,12 +14,22 @@
 
 }
 
+.memory-image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+@import "~bootstrap/scss/bootstrap";
 .card{
+    background-color: rgb(114, 91, 83);
     display: inline-block;
     margin: 1%;
-    height: 22%;
-    width: 18%;
+    height: 21.8%;
+    width: 22.8%;
 }
-@import "~bootstrap/scss/bootstrap";
+
+
+
 
 //aqui se le podria agregar algo al hoover, pero me causa errores
