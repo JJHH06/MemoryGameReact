@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './style.scss';
 import Card from './components/Card';
+import Counter from './components/Counter'
 //importación de imagenes
 import img1 from './assets/meme1.jpg'
 import img2 from './assets/meme2.jpg'
@@ -12,7 +13,7 @@ import img7 from './assets/meme7.jpg'
 import img8 from './assets/meme8.png'
 
 //creacion de objetos de memoria
-//no es necesaria una key, ya que siempre se le hara
+//no es necesaria una key, ya que la posicion nos ayudara
 const cartas = [
     {
         src: img1,
@@ -110,6 +111,7 @@ function Game(){
     const [puntaje, setPuntaje] = useState(0);
     const [winnedCards, setWinnedCards] = useState([]);
     const [actualCards, setActualCards] = useState([]);
+    const [playerAttemps, setPlayerAttemps] = useState(0);
 
     const cardIsFlippable = (id, casilla) =>{
         //primero se ve si la primera y si esta existe
@@ -131,10 +133,12 @@ function Game(){
         setWinnedCards([carta1.casilla, carta2.casilla]);
     }
 
+    //hace un set de algo vacio, esto le da un trigger a las funciones basadas en esta variable
     const addNoWinnerCard = () =>{
         setWinnedCards([]);
     }
 
+    // en realidad es un boolean que retorna si la carta es de las seleccionadas actualmente
     const getCurrentCards = (indice) => {
         return actualCards.includes(indice);
     }
@@ -150,10 +154,12 @@ function Game(){
                 addWinnedCards();
                 resetData();
                 setPuntaje(puntaje+1);//se agrega al puntaje
+                setPlayerAttemps(playerAttemps +1);
             }
             else{//aqui significa que no adivino
                 addNoWinnerCard();
                 resetData();
+                setPlayerAttemps(playerAttemps +1);
             }
         }
         
@@ -169,7 +175,7 @@ function Game(){
 
     //cuando haya una segunda carta seleccionada
     useEffect(()=>{
-        setActualCards([carta1.casilla, carta2.casilla])
+        setActualCards([carta1.casilla, carta2.casilla]);
         checkMatch();
     },[carta2])
 
@@ -182,7 +188,6 @@ function Game(){
     //alert('El pepe')
     return (
         <div className='game'>
-            {/* <h1 className = 'title'>hola xd</h1> */}
             <div className='game-container'>
                 {
                     cards.map((card,index) =>(
@@ -190,7 +195,9 @@ function Game(){
                     ))
                 }
             </div>
+            <Counter cantidadIntentos={playerAttemps}></Counter>
         </div>
+        
     );
 }
 

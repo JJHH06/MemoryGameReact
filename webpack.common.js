@@ -13,9 +13,8 @@ module.exports = {
     }
     ),
     
-
 ],
-//no ten
+//en caso de que quiera usar .jsx
 resolve: {
     extensions: ['.js', '.jsx'],
 },
