@@ -3,7 +3,7 @@ import ReactCardFlip from 'react-card-flip';
 import fondo from '../assets/background.png';
 
 
-const Card = ({imagen, casilla, id, cardIsFlippable, winnedCards}) =>{
+const Card = ({imagen, casilla, id, cardIsFlippable, winnedCards,getCurrentCards}) =>{
     const [isRevealed, setRevealed] = useState(false);
     const [isAllowedToClick, setIsAllowedToCLick] = useState(true);
 
@@ -13,7 +13,9 @@ const Card = ({imagen, casilla, id, cardIsFlippable, winnedCards}) =>{
                 setIsAllowedToCLick(false);
             }
             else {
+                if(getCurrentCards(casilla)){ //progra defensiva en caso de que le den muy rapido a otra carta
                 setTimeout(() => setRevealed(false), 1000);
+                }
             }
         }
     },[winnedCards])

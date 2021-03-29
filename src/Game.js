@@ -109,6 +109,7 @@ function Game(){
     const [carta2, setCarta2] = useState({});
     const [puntaje, setPuntaje] = useState(0);
     const [winnedCards, setWinnedCards] = useState([]);
+    const [actualCards, setActualCards] = useState([]);
 
     const cardIsFlippable = (id, casilla) =>{
         //primero se ve si la primera y si esta existe
@@ -134,6 +135,10 @@ function Game(){
         setWinnedCards([]);
     }
 
+    const getCurrentCards = (indice) => {
+        return actualCards.includes(indice);
+    }
+
     const resetData = () =>{
         setCarta1({});
         setCarta2({});
@@ -142,9 +147,9 @@ function Game(){
     const checkMatch = () =>{
         if(!(Object.keys(carta2).length === 0 && carta2.constructor === Object)){//si el cambio no fue porque se seteo a vacio
             if(carta2.id ===carta1.id){//aqui significa un nuevo punto
-                setPuntaje(puntaje+1);//se agrega al puntaje
                 addWinnedCards();
                 resetData();
+                setPuntaje(puntaje+1);//se agrega al puntaje
             }
             else{//aqui significa que no adivino
                 addNoWinnerCard();
@@ -164,9 +169,16 @@ function Game(){
 
     //cuando haya una segunda carta seleccionada
     useEffect(()=>{
+        setActualCards([carta1.casilla, carta2.casilla])
         checkMatch();
     },[carta2])
 
+    useEffect(()=>{
+        if(puntaje ==8){
+            alert("🎉¡Felicidades!🎉\n\nJUEGO COMPLETADO")
+        }
+        
+    },[puntaje])
     //alert('El pepe')
     return (
         <div className='game'>
@@ -174,7 +186,7 @@ function Game(){
             <div className='game-container'>
                 {
                     cards.map((card,index) =>(
-                        <Card id={card.id} casilla={index} imagen = {card.src} cardIsFlippable = {cardIsFlippable} winnedCards={winnedCards}/>
+                        <Card id={card.id} casilla={index} imagen = {card.src} cardIsFlippable = {cardIsFlippable} winnedCards={winnedCards} getCurrentCards={getCurrentCards}/>
                     ))
                 }
             </div>
