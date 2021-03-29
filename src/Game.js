@@ -134,14 +134,21 @@ function Game(){
         setWinnedCards([]);
     }
 
+    const resetData = () =>{
+        setCarta1({});
+        setCarta2({});
+    }
+
     const checkMatch = () =>{
         if(!(Object.keys(carta2).length === 0 && carta2.constructor === Object)){//si el cambio no fue porque se seteo a vacio
             if(carta2.id ===carta1.id){//aqui significa un nuevo punto
                 setPuntaje(puntaje+1);//se agrega al puntaje
                 addWinnedCards();
+                resetData();
             }
             else{//aqui significa que no adivino
                 addNoWinnerCard();
+                resetData();
             }
         }
         
