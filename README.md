@@ -1,7 +1,7 @@
 # MemoryGameReact
 
 Para crear los archivos se utiliza:
-`<addr>` npm run build
+`npm run build` 
 
 Para correr con nodejs:
-`<addr>` npm start
+`npm start` 
