@@ -7,7 +7,6 @@ import Game from './Game';
 
 // esto si se debe de deshabilitar, sino truena
 ReactDom.render(
-  // eslint-disable-next-line react/jsx-filename-extension
   <React.StrictMode>
     <Game />
   </React.StrictMode>,

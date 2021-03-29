@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
+import PropTypes from 'prop-types';
 import fondo from '../assets/background.png';
 
 const Card = ({
@@ -14,7 +15,7 @@ const Card = ({
         setIsAllowedToCLick(false);
         // progra defensiva en caso de que le den muy rapido a otra carta
       } else if (getCurrentCards(casilla)) {
-        setTimeout(() => setRevealed(false), 1000);
+        setTimeout(() => setRevealed(false), 1100);
       }
     }
   }, [winnedCards]);
@@ -38,6 +39,17 @@ const Card = ({
       </ReactCardFlip>
     </div>
   );
+};
+
+Card.propTypes = {
+
+  imagen: PropTypes.string.isRequired,
+  casilla: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  winnedCards: PropTypes.arrayOf(PropTypes.number).isRequired,
+  getCurrentCards: PropTypes.bool.isRequired,
+  cardIsFlippable: PropTypes.bool.isRequired,
+
 };
 
 export default Card;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Counter = ({ cantidadIntentos }) => {
   const [playerTries, setPlayerTries] = useState(0);
@@ -14,6 +15,12 @@ const Counter = ({ cantidadIntentos }) => {
       </h4>
     </div>
   );
+};
+
+Counter.propTypes = {
+
+  cantidadIntentos: PropTypes.number.isRequired,
+
 };
 
 export default Counter;

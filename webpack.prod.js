@@ -1,28 +1,28 @@
-const path = require("path");
-const common = require("./webpack.common");
-const{merge} = require("webpack-merge");
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const { merge } = require('webpack-merge');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const common = require('./webpack.common');
 
-module.exports = merge(common,{
-    mode: "production",
-    
-    output: {
-        filename: "[name].[contenthash].bundle.js",
-        path: path.resolve(__dirname, "dist")
+module.exports = merge(common, {
+  mode: 'production',
 
-    },
-    plugins: [
-        new MiniCssExtractPlugin({filename: "[name].[contenthash].css"}),
-        new CleanWebpackPlugin()
+  output: {
+    filename: '[name].[contenthash].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+
+  },
+  plugins: [
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+    new CleanWebpackPlugin(),
+  ],
+
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
     ],
-    
-    module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
-            }
-        ]
-    }
+  },
 });
